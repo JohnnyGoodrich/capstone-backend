@@ -6,6 +6,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 
 const foodController = require('./controllers/food-controller')
+const mealController = require('./controllers/meal-controller')
 
 
 /* SECTION DB CONNNECTION */
@@ -17,6 +18,7 @@ app.use(cors())
 app.use(morgan('dev'))
 
 app.use('/food', foodController)
+app.use('/meal', mealController)
 
 app.get('/', (req, res)=>res.redirect('/food'))
 
