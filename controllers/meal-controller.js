@@ -50,12 +50,24 @@ router.get('/:id', async (req, res) => {
 //         res.status(400).json({ error: err })
 //     }
 // })
-router.post('/:id', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
-        const newFood = await MealItem.create(req.body)
+        const newFood = await Meal.create(req.body)
         res.status(200).json(newFood)
     } catch (err) {
         res.status(400).json({ error: err })
+    }
+})
+router.post('/:id', async (req, res) => {
+    try {
+        delete req.body._id
+
+        req.body.title = req.params.id
+        const newFood = await MealItem.create(req.body)
+        res.status(200).json(newFood)
+    } catch (err) {
+
+        res.status(400).json({ error: err.message })
     }
 })
 
@@ -82,7 +94,7 @@ router.put('/:id', async (req, res) => {
 //     }
 // })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id/mealitem', async (req, res) => {
     try {
         const deleteFoodItem = await Meal.findByIdAndDelete(req.params.id);
         // const deletedReviews = await MovieReview.deleteMany({ title: req.params.id });
