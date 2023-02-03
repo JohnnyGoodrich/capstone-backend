@@ -39,6 +39,24 @@ router.get('/:id', async (req, res) => {
         res.status(400).json({ error: err })
     }
 })
+router.get('/:id', async (req, res) => {
+    try {
+        const foundFood = await Meal.findById(req.params.id);
+        const allFoods = await MealItem.find({ title: req.params.id });
+        res.status(200).json({ title: foundFood, foods: allFoods })
+    } catch (err) {
+        res.status(400).json({ error: err })
+    }
+})
+router.get('/edit/:id', async (req, res) => {
+    try {
+        const foundFood = await Meal.findById(req.params.id);
+        const allFoods = await MealItem.findById(req.params.id);
+        res.status(200).json(allFoods)
+    } catch (err) {
+        res.status(400).json({ error: err })
+    }
+})
 
 //create route
 // router.post('/:id', async (req, res) => {
@@ -94,11 +112,11 @@ router.put('/:id', async (req, res) => {
 //     }
 // })
 
-router.delete('/:id/mealitem', async (req, res) => {
+router.delete('/edit/:id', async (req, res) => {
     try {
-        const deleteFoodItem = await Meal.findByIdAndDelete(req.params.id);
+        const deleteFoodItem = await MealItem.findByIdAndDelete(req.params.id);
         // const deletedReviews = await MovieReview.deleteMany({ title: req.params.id });
-        res.redirect(200, '/movie')
+        res.redirect(200, '/')
 
     } catch (err) {
         res.status(400).json({ error: err })
