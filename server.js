@@ -7,6 +7,8 @@ const morgan = require('morgan')
 
 const foodController = require('./controllers/food-controller')
 const mealController = require('./controllers/meal-controller')
+const mealItemController = require('./controllers/mealitem-controller')
+const goalsController = require('./controllers/goals-controller')
 
 
 /* SECTION DB CONNNECTION */
@@ -19,6 +21,8 @@ app.use(morgan('dev'))
 
 app.use('/food', foodController)
 app.use('/meal', mealController)
+app.use('/mealitems', mealItemController)
+app.use('/goals', goalsController)
 
 app.get('/', (req, res)=>res.redirect('/food'))
 
