@@ -3,5 +3,6 @@ module.exports = {
     Meal: require('./Meal'),
     MealItem: require('./MealItem'),
     Goals: require('./Goals'),
+    User: require('./User'),
     
   } 

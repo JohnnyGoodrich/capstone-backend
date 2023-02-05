@@ -9,6 +9,7 @@ const foodController = require('./controllers/food-controller')
 const mealController = require('./controllers/meal-controller')
 const mealItemController = require('./controllers/mealitem-controller')
 const goalsController = require('./controllers/goals-controller')
+const authController = require('./controllers/auth-controller')//Triet's stuff:
 
 
 /* SECTION DB CONNNECTION */
@@ -23,6 +24,7 @@ app.use('/food', foodController)
 app.use('/meal', mealController)
 app.use('/mealitems', mealItemController)
 app.use('/goals', goalsController)
+app.use('/auth', authController)//Triet's stuff
 
 app.get('/', (req, res)=>res.redirect('/food'))
 
