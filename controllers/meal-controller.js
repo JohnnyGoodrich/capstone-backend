@@ -122,4 +122,14 @@ router.delete('/edit/:id', async (req, res) => {
         res.status(400).json({ error: err })
     }
 })
+router.delete('/:id', async (req, res) => {
+    try {
+        const deleteFoodItem = await Meal.findByIdAndDelete(req.params.id);
+        // const deletedReviews = await MovieReview.deleteMany({ title: req.params.id });
+        res.redirect(200, '/')
+
+    } catch (err) {
+        res.status(400).json({ error: err })
+    }
+})
 module.exports = router
