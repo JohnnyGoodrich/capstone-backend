@@ -4,7 +4,7 @@ const MealSchema = new mongoose.Schema({
    
     title: {
         type: String,
-        required: false,
+        required: true,
         minlegnth: 1,
         maxlength: 50
     },
@@ -12,6 +12,11 @@ const MealSchema = new mongoose.Schema({
     //     type: Number,
     //     required: false,
     // },
+    // owner: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User',
+    //     required: true
+    //   }
 
   
 }, {timestamps: true})

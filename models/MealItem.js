@@ -36,7 +36,13 @@ const MealItemSchema = new mongoose.Schema({
     ingredients:{
         type: Array,
 
-    }
+    },
+    // Auth
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+      }
 }, {timestamps: true})
 
 const MealItem = mongoose.model("MealItem", MealItemSchema)
